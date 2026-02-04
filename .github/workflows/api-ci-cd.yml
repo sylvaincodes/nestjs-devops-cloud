@@ -84,6 +84,13 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+
+            set -e
+
+            # Login to ECR
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | \
+            docker login --username AWS --password-stdin ${{ secrets.ECR_REPOSITORY }} 
+
             docker pull ${{ secrets.ECR_REPOSITORY }}:latest
 
             docker stop youtube-nestjsapi-ecommerce || true
