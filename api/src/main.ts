@@ -57,7 +57,8 @@ async function bootstrap() {
       },
       'JWT-refresh',
     )
-    .addServer('http://localhost:3001', 'Development server')
+    .addServer(`http://localhost:${process.env.PORT}`, 'Development server')
+    .addServer(`https://youtubenestapi.goaltracker.life`, 'Production server')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
