@@ -76,7 +76,7 @@ async function bootstrap() {
     `,
   });
 
-  await app.listen(process.env.PORT ?? 3001, '0.0.0.0'); // to listen on all network interfaces not just localhost
+  await app.listen(process.env.PORT ?? 3001);
 }
 bootstrap().catch((error) => {
   Logger.error('Error starting server', error);
